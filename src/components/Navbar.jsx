@@ -10,7 +10,7 @@ const Navbar = () => {
       <nav className="flex justify-between items-center h-20 max-w-6xl mx-auto">
         <NavLink to="/Shopapp">
           <div className="ml-5">
-            <p className=" text-slate-100">DHRUV</p>
+            <p className=" text-slate-100">SMARTCART</p>
           </div>
         </NavLink>
 
