@@ -12,7 +12,7 @@ const App = () => {
       </div>
       <Routes>
         <Route path="/shopapp" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/shopapp/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} /> {/* 404 Route */}
       </Routes>
     </div>
