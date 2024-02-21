@@ -8,14 +8,14 @@ const Navbar = () => {
   return (
     <div>
       <nav className="flex justify-between items-center h-20 max-w-6xl mx-auto">
-        <NavLink to="/">
+        <NavLink to="/Shopapp">
           <div className="ml-5">
             <p className=" text-slate-100">DHRUV</p>
           </div>
         </NavLink>
 
         <div className="flex items-center font-medium text-slate-100 mr-5 space-x-6">
-          <NavLink to="/">
+          <NavLink to="/Shopapp">
             <p>Home</p>
           </NavLink>
 
