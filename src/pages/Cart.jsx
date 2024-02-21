@@ -5,11 +5,10 @@ import CartItem from "../components/CartItem";
 
 const Cart = () => {
   const { cart } = useSelector((state) => state);
-  console.log("Printing Cart");
-  console.log(cart);
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
+    // Calculate total amount when cart changes
     setTotalAmount(cart.reduce((acc, curr) => acc + curr.price, 0));
   }, [cart]);
 
@@ -18,18 +17,19 @@ const Cart = () => {
       {cart.length > 0 ? (
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-center">
           <div className="w-[100%] md:w-[60%] flex flex-col p-2">
-            {cart.map((item, index) => {
-              return <CartItem key={item.id} item={item} itemIndex={index} />;
-            })}
+            {/* Render each item in the cart */}
+            {cart.map((item, index) => (
+              <CartItem key={item.id} item={item} itemIndex={index} />
+            ))}
           </div>
 
-          <div className="w-[100%] md:w-[40%] mt-5  flex flex-col">
-            <div className="flex flex-col p-5 gap-5 my-14  h-[100%] justify-between">
-              <div className="flex flex-col gap-5 ">
-                <div className="font-semibold text-xl text-green-800 ">
+          <div className="w-[100%] md:w-[40%] mt-5 flex flex-col">
+            <div className="flex flex-col p-5 gap-5 my-14 h-[100%] justify-between">
+              <div className="flex flex-col gap-5">
+                <div className="font-semibold text-xl text-green-800">
                   Your Cart
                 </div>
-                <div className="font-semibold text-5xl text-green-700  -mt-5">
+                <div className="font-semibold text-5xl text-green-700 -mt-5">
                   Summary
                 </div>
                 <p className="text-xl">

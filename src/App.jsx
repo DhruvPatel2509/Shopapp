@@ -1,8 +1,8 @@
-import { Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
@@ -11,8 +11,9 @@ const App = () => {
         <Navbar />
       </div>
       <Routes>
-        <Route path="/Shopapp" element={<Home />} />
+        <Route path="/shopapp" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="*" element={<NotFound />} /> {/* 404 Route */}
       </Routes>
     </div>
   );

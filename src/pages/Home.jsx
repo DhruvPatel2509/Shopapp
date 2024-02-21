@@ -10,39 +10,41 @@ const Home = () => {
   async function fetchProductData() {
     setLoading(true);
 
-    try{
+    try {
       const res = await fetch(API_URL);
-      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(`Failed to fetch data: ${res.status}`);
+      }
 
+      const data = await res.json();
       setPosts(data);
-    }
-    catch(error) {
-      console.log("Error aagya ji");
+    } catch (error) {
+      console.error("Error occurred:", error);
       setPosts([]);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   }
 
-  useEffect( () => {
+  useEffect(() => {
     fetchProductData();
-  },[])
+  }, []);
 
   return (
     <div>
-      {
-        loading ? <Spinner />  :
-        posts.length > 0 ? 
-        (<div className="grid  xs:gridcols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
-          {
-            posts.map( (post) => (
-            <Product key = {post.id} post={post}/>
-          ) )
-          }
-        </div>) :
-        <div className="flex justify-center items-center">
+      {loading ? (
+        <Spinner />
+      ) : posts.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-6xl p-2 mx-auto space-y-10 min-h-[80vh]">
+          {posts.map((post) => (
+            <Product key={post.id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center h-full">
           <p>No Data Found</p>
-        </div> 
-      }
+        </div>
+      )}
     </div>
   );
 };
